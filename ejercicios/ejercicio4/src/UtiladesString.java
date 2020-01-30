@@ -3,7 +3,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class UtiladesString {
-    public static final String[] PREPOSICIONES = {"a", "ante", "bajo", "cabe", "con", "contra", "de", "desde", "durante", "en", "entre", "hacia", "hasta", "mediante", "para", "por", "según", "sin", "so", "sobre", "tras", "versus" , "vía"};
+    public static final String[] PREPOSICIONES =
+            {"a", "ante", "bajo", "cabe", "con", "contra", "de", "desde",
+                    "durante", "en", "entre", "hacia", "hasta", "mediante",
+                    "para", "por", "según", "sin", "so", "sobre", "tras",
+                    "versus" , "vía"};
+    public static final String[] ARTICULOS_DETERMINADOS =   {"el", "la", "los", "las"};
+    public static final String[] ARTICULOS_INDETERMINADOS =   {"un", "uno", "unos", "unas"};
+
     public static int obtenerNumeroPalabras(List<String> texto){
         return texto.size();
     }
@@ -27,5 +34,26 @@ public class UtiladesString {
             }
 
         return contadorPreposiciones;
+    }
+    public static int obtenerNumeroArticulosDeterminados(List<String> texto) {
+        int contadorArticulosDeterminados = 0;
+
+        for (int i = 0; i < ARTICULOS_DETERMINADOS.length; i++) {
+            contadorArticulosDeterminados += Collections.frequency(
+                    texto, ARTICULOS_DETERMINADOS[i]);
+        }
+
+        return contadorArticulosDeterminados;
+    }
+
+    public static int obtenerNumeroArticulosIndeterminados(List<String> texto) {
+        int contadorArticulosIndeterminados = 0;
+
+        for (int i = 0; i < ARTICULOS_INDETERMINADOS.length; i++) {
+            contadorArticulosIndeterminados += Collections.frequency(
+                    texto, ARTICULOS_INDETERMINADOS[i]);
+        }
+
+        return contadorArticulosIndeterminados;
     }
 }
