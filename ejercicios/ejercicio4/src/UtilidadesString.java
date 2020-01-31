@@ -2,14 +2,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class UtiladesString {
+public class UtilidadesString {
     public static final String[] PREPOSICIONES =
             {"a", "ante", "bajo", "cabe", "con", "contra", "de", "desde",
                     "durante", "en", "entre", "hacia", "hasta", "mediante",
                     "para", "por", "según", "sin", "so", "sobre", "tras",
                     "versus" , "vía"};
-    public static final String[] ARTICULOS_DETERMINADOS =   {"el", "la", "los", "las"};
-    public static final String[] ARTICULOS_INDETERMINADOS =   {"un", "uno", "unos", "unas"};
+    public static final String[] ARTICULOS_DETERMINADOS =   {"el","lo", "la", "los", "las"};
+    public static final String[] ARTICULOS_INDETERMINADOS =   {"un", "una", "unos", "unas"};
 
     public static int obtenerNumeroPalabras(List<String> texto){
         return texto.size();
@@ -55,5 +55,17 @@ public class UtiladesString {
         }
 
         return contadorArticulosIndeterminados;
+    }
+
+    //con solo este método podemos localizar cualquier tipo de tokens
+    public static int obtenerNumeroTokens(List<String> texto, String[] tokens) {
+        int contador = 0;
+        for (String palabra : texto) {
+            for (int i = 0; i < tokens.length; i++) {
+                if (palabra.equalsIgnoreCase(tokens[i]))
+                    contador++;
+            }
+        }
+        return contador;
     }
 }

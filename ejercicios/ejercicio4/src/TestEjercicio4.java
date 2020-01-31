@@ -29,7 +29,7 @@ public class TestEjercicio4 {
                         palabra = matcher1.group(2).replaceAll("[,\\.:]", "");
                     else
                         palabra = matcher1.group(2);
-                    constitucion.add(palabra.toLowerCase());
+                    constitucion.add(palabra);
                 }
                 continue;
             }
@@ -38,21 +38,31 @@ public class TestEjercicio4 {
                 continue;
             }
             if (palabra.contains(",") || palabra.contains(".") ||
-                    palabra.contains(":"))
+                    palabra.contains(":"))  //signo de puntuación . , :
                 palabra = palabra.replaceAll("[,\\.:]", "");
 
-            if (palabra.matches("^I{1,3}|^I?[VX]I{0,3}")) {
+            if (palabra.matches("^I{1,3}|^I?[VX]I{0,3}")) { //desde el I al XIII
                continue;
             }
-            constitucion.add(palabra.toLowerCase());
+            constitucion.add(palabra);
         }
        // System.out.println(listaPalabras);
        // listaPalabras.forEach(System.out::println);
         System.out.printf("La constitución tiene %d palabras.%n",
-                UtiladesString.obtenerNumeroPalabras(constitucion));
+                UtilidadesString.obtenerNumeroPalabras(constitucion));
+       // System.out.printf("La constitución tiene %d preposiciones.%n",
+              //  UtiladesString.obtenerNumeroPreposiciones(constitucion));
+       // System.out.printf("La constitución tiene %d preposiciones.%n",
+        //        UtiladesString.obtenerNumeroPreposicionesv0(constitucion));
         System.out.printf("La constitución tiene %d preposiciones.%n",
-                UtiladesString.obtenerNumeroPreposiciones(constitucion));
-        System.out.printf("La constitución tiene %d preposiciones.%n",
-                UtiladesString.obtenerNumeroPreposicionesv0(constitucion));
+                UtilidadesString.obtenerNumeroTokens(constitucion,
+                        UtilidadesString.PREPOSICIONES));
+        System.out.printf("La constitución tiene %d artículos determinados.%n",
+                UtilidadesString.obtenerNumeroTokens(constitucion,
+                        UtilidadesString.ARTICULOS_DETERMINADOS));
+        System.out.printf("La constitución tiene %d artículos indeterminados.%n",
+                UtilidadesString.obtenerNumeroTokens(constitucion,
+                        UtilidadesString.ARTICULOS_INDETERMINADOS));
+
     }
 }
